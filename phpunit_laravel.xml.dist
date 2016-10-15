@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.2/phpunit.xsd"
+         backupGlobals="false"
+         bootstrap="vendor-bin/laravel/vendor/autoload.php"
+         colors="true"
+         enforceTimeLimit="true"
+>
+
+    <testsuites>
+        <testsuite name="Laravel bridge tests">
+            <directory>tests/Bridge/Laravel</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src/Bridge/Laravel</directory>
+        </whitelist>
+    </filter>
+</phpunit>

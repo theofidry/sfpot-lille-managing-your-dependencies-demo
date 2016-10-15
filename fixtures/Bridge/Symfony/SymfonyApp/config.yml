@@ -1,0 +1,10 @@
+framework:
+    secret: test
+    router:
+        resource: ~
+    form:
+        enabled: false
+    validation:
+        enabled: false
+    session: ~
+    test: ~
