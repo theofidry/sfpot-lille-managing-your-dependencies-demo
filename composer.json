@@ -1,6 +1,6 @@
 {
   "require": {
-    "php": "~7.0.0"
+    "php": "7.0 - 7.1"
   },
   "require-dev": {
     "bamarni/composer-bin-plugin": "dev-master",
