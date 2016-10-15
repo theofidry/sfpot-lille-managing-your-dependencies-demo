@@ -3,8 +3,8 @@
 # Setup
 set -e
 
-export INFO_COLOR="\e[34m"
-export NO_COLOR="\e[0m"
+INFO_COLOR="\e[34m"
+NO_COLOR="\e[0m"
 
 log() {
     local message=$1

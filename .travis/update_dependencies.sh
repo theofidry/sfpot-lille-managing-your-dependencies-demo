@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 if [ -n "$SYMFONY_VERSION" ]; then
     composer bin symfony require --dev --no-update "symfony/framework-bundle:${SYMFONY_VERSION}"

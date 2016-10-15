@@ -44,34 +44,33 @@ matrix:
       env:
         - LARAVEL_VERSION='~5.3.0'
     - php: '7.0'
-      env:
-        - LARAVEL_VERSION='~5.4.0@dev'
+      env: LARAVEL_VERSION='~5.4.0@dev'
 
   allow_failures:
     - php: nightly
-    - php: '7.0'
-      env:
+    - env:
         - SYMFONY_VERSION='~3.2.0@dev'
-    - php: '7.0'
-      env:
-        - LARAVEL_VERSION='~5.4.0@dev'
+    - env: LARAVEL_VERSION='~5.4.0@dev'
 
 before_install:
   - set -eo pipefail
   - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - source bin/composer.sh
+  - source .travis/composer.sh
   - |
     if [ "$TRAVIS_PHP_VERSION" = "nightly" ]; then
         COMPOSER_FLAGS="$COMPOSER_FLAGS --ignore-platform-reqs"
     fi
+  - COMPOSER_FLAGS="$COMPOSER_FLAGS --no-suggest --prefer-dist"
+  - export PHPUNIT_FLAGS="--stop-on-failure --verbose"
 
 install:
-  - composer update --prefer-dist $COMPOSER_FLAGS
-  - source update_dependencies.sh
-  - composer bin all update --prefer-dist $COMPOSER_FLAGS
+  - composer update $COMPOSER_FLAGS
+  - source .travis/update_dependencies.sh
+  - composer bin all update $COMPOSER_FLAGS
+  - composer bin all update $COMPOSER_FLAGS
 
 script:
-  - bin/tests.sh
+  - bin/test.sh
 
 notifications:
   email: false
